@@ -1,7 +1,6 @@
-import { greetUser } from '$utils/greet';
+import { richCmsConstrucor_func } from '$utils/rich-cms-construcor';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
-  const name = 'John Doe';
-  greetUser(name);
+  richCmsConstrucor_func();
 });
