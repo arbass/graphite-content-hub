@@ -1,6 +1,7 @@
 export const richCmsConstrucor_func = () => {
-  const richCmsConstrucor_el = document.querySelectorAll('[rcms-section]');
-  if (richCmsConstrucor_el.length) {
+  const richCmsConstrucorWrapper_el = document.querySelectorAll('[rcms-section-wrapper]');
+  if (richCmsConstrucorWrapper_el) {
+    const richCmsConstrucor_el = document.querySelectorAll('[rcms-section]');
     const wfArray = [];
     richCmsConstrucor_el.forEach((section, id) => {
       const elementToWrap = section;
@@ -48,6 +49,26 @@ export const richCmsConstrucor_func = () => {
       wfArray.push(wfCurrent);
     });
 
-    console.log(wfArray);
+    document.querySelectorAll('.object-clone-btn').forEach((item, id) => {
+      item.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log('Button clicked');
+        document.addEventListener(
+          'copy',
+          (event) => {
+            const data = JSON.stringify(wfArray[id]);
+            console.log('Object copied');
+            if (event.clipboardData) {
+              event.clipboardData.setData('application/json', data);
+            } else if (window.clipboardData) {
+              window.clipboardData.setData('application/json', data);
+            }
+            event.preventDefault();
+          },
+          true
+        );
+        document.execCommand('copy');
+      });
+    });
   }
 };
