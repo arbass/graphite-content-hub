@@ -2,7 +2,7 @@ export const richGridPattern_func = () => {
   const richGridPattern_el = document.querySelector('[rich-grid-pattern]');
   if (richGridPattern_el) {
     const allTipsElements = document.querySelectorAll('.modules_grid-facts');
-    const tipIterator = 0;
+    let tipIterator = 0;
     let currentPatternValue = richGridPattern_el.getAttribute('rich-grid-pattern');
     currentPatternValue = currentPatternValue.split(',');
     const allArticleCards = richGridPattern_el.querySelectorAll('.cl-i_modules_grid-item');
@@ -26,11 +26,20 @@ export const richGridPattern_func = () => {
             card.previousElementSibling &&
             card.previousElementSibling.previousElementSibling
           ) {
-            const elToWrap = [
-              card.previousElementSibling,
-              card.previousElementSibling.previousElementSibling,
-            ];
-            wrapTwinCards(elToWrap);
+            if (
+              currentPatternValue[id - 1] != 'big-tip' &&
+              currentPatternValue[id - 1] != 'big-empty' &&
+              currentPatternValue[id - 1] != 'big-card' &&
+              currentPatternValue[id + 1] != 'big-tip' &&
+              currentPatternValue[id + 1] != 'big-empty' &&
+              currentPatternValue[id + 1] != 'big-card'
+            ) {
+              const elToWrap = [
+                card.previousElementSibling,
+                card.previousElementSibling.previousElementSibling,
+              ];
+              wrapTwinCards(elToWrap);
+            }
           }
           //--
 
@@ -42,8 +51,20 @@ export const richGridPattern_func = () => {
             card.nextElementSibling &&
             card.nextElementSibling.nextElementSibling
           ) {
-            const elToWrap = [card.nextElementSibling, card.nextElementSibling.nextElementSibling];
-            wrapTwinCards(elToWrap);
+            if (
+              currentPatternValue[id - 1] != 'big-tip' &&
+              currentPatternValue[id - 1] != 'big-empty' &&
+              currentPatternValue[id - 1] != 'big-card' &&
+              currentPatternValue[id + 1] != 'big-tip' &&
+              currentPatternValue[id + 1] != 'big-empty' &&
+              currentPatternValue[id + 1] != 'big-card'
+            ) {
+              const elToWrap = [
+                card.nextElementSibling,
+                card.nextElementSibling.nextElementSibling,
+              ];
+              wrapTwinCards(elToWrap);
+            }
           }
         }
 
