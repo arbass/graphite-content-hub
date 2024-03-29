@@ -1,6 +1,8 @@
 export const richGridPattern_func = () => {
   const richGridPattern_el = document.querySelector('[rich-grid-pattern]');
   if (richGridPattern_el) {
+    const allTipsElements = document.querySelectorAll('.modules_grid-facts');
+    const tipIterator = 0;
     let currentPatternValue = richGridPattern_el.getAttribute('rich-grid-pattern');
     currentPatternValue = currentPatternValue.split(',');
     const allArticleCards = richGridPattern_el.querySelectorAll('.cl-i_modules_grid-item');
@@ -47,14 +49,43 @@ export const richGridPattern_func = () => {
 
         if (currentPatternValue[id] === 'big-empty') {
           checkBefore_and_after();
+          //–––––
+          // Предположим, у нас есть элемент с идентификатором 'targetElement'
+          const target = card;
+
+          // Создаем новый div
+          const wrapper = document.createElement('div');
+          wrapper.classList.add('space', 'modules_grid-item');
+
+          // Вставляем новый div перед целевым элементом в DOM
+          target.parentNode.insertBefore(wrapper, target);
+
+          // Перемещаем целевой элемент внутрь нового div
+          wrapper.appendChild(target);
         }
         if (currentPatternValue[id] === 'big-tip') {
           checkBefore_and_after();
+          //будем вставлять тип, но сначала надо сделать так, чтобы они добавлялись рандомно и не повторялись
+          //–––––
+          // Предположим, у нас есть элемент с идентификатором 'targetElement'
+          // const target = card;
+
+          // Создаем новый div
+          // const wrapper = allTipsElements[tipIterator];
+
+          // Вставляем новый div перед целевым элементом в DOM
+          card.parentElement.insertBefore(allTipsElements[tipIterator], card);
+
+          // Перемещаем целевой элемент внутрь нового div
+          // wrapper.appendChild(target);
         }
         if (currentPatternValue[id] === 'big-card') {
           checkBefore_and_after();
+          const cardImage = card.querySelector('img');
+          cardImage.classList.remove('hide');
         }
         if (currentPatternValue[id] === 'large-card') {
+          //do nothing
         }
       }
     });
