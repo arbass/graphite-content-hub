@@ -70,11 +70,9 @@ export const richGridPattern_func = () => {
 
         if (currentPatternValue[id] === 'big-empty') {
           checkBefore_and_after();
-          const target = card;
           const wrapper = document.createElement('div');
           wrapper.classList.add('space', 'modules_grid-item');
-          target.parentNode.insertBefore(wrapper, target);
-          wrapper.appendChild(target);
+          card.parentElement.insertBefore(wrapper, card);
         }
         if (currentPatternValue[id] === 'big-tip') {
           checkBefore_and_after();
