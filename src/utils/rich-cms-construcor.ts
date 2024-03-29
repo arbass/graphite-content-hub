@@ -1,5 +1,5 @@
 export const richCmsConstrucor_func = () => {
-  const richCmsConstrucorWrapper_el = document.querySelectorAll('[rcms-section-wrapper]');
+  const richCmsConstrucorWrapper_el = document.querySelector('[rcms-section-wrapper]');
   if (richCmsConstrucorWrapper_el) {
     const richCmsConstrucor_el = document.querySelectorAll('[rcms-section]');
     const wfArray = [];
