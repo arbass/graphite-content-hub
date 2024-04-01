@@ -39,13 +39,11 @@ export const richGridPattern_func = () => {
         create_newModule(element);
       }
       if (array_patterns[iterator_patterns] === 'big-tip') {
+        const testEl = document.createElement('h2');
+        testEl.textContent = 'test';
         console.log('test');
+        create_newModule(testEl);
         create_newModule(element);
-
-        // const testEl = document.createElement('h2');
-        // testEl = testEl.textContent('tip');
-        // console.log(testEl);
-        // create_newModule(testEl);
       }
     }
     //
