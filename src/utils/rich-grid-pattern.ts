@@ -84,7 +84,6 @@ export const richGridPattern_func = () => {
       }
       function twinWrapping() {
         const allTwinWaters = document.querySelectorAll('.looking-for-a-twin');
-        console.log(allTwinWaters);
 
         if (allTwinWaters.length >= 2) {
           if (allTwinWaters[0].nextElementSibling.classList.contains('looking-for-a-twin')) {
