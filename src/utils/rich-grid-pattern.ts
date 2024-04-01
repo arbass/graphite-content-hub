@@ -4,7 +4,7 @@ export const richGridPattern_func = () => {
     const grid_fake = document.querySelector('.modules_grid.fake');
 
     const array_allTips = document.querySelectorAll('.modules_grid-facts');
-    const iterator_tips = 0;
+    let iterator_tips = 0;
 
     let array_patterns = richGridPattern_el.getAttribute('rich-grid-pattern');
     array_patterns = array_patterns.split(',');
@@ -39,10 +39,13 @@ export const richGridPattern_func = () => {
         create_newModule(element);
       }
       if (array_patterns[iterator_patterns] === 'big-tip') {
-        const testEl = document.createElement('h2');
-        testEl.textContent = 'test';
-        console.log('test');
-        create_newModule(testEl);
+        if (iterator_tips < array_allTips.length) {
+          iterator_tips = iterator_tips + 1;
+        } else {
+          iterator_tips = 0;
+        }
+
+        create_newModule(array_allTips[iterator_tips]);
         create_newModule(element);
       }
     }
