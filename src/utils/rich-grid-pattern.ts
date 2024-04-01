@@ -26,7 +26,7 @@ export const richGridPattern_func = () => {
         space.classList.add('space');
 
         create_newModule(space);
-        create_newModule(element);
+        // create_newModule(element);
       }
       if (array_patterns[iterator_patterns] === 'large-double-card') {
         create_newModule(element);
@@ -46,7 +46,7 @@ export const richGridPattern_func = () => {
         }
 
         create_newModule(array_allTips[iterator_tips]);
-        create_newModule(element);
+        // create_newModule(element);
       }
     }
     //
@@ -64,7 +64,7 @@ export const richGridPattern_func = () => {
       while (document.querySelectorAll('.need-to-modified').length) {
         if (iterator_patterns < array_patterns.length) {
           const firstElement = document.querySelectorAll('.need-to-modified')[0];
-
+          //вынести сюда создание всякой дичи
           firstElement.classList.remove('need-to-modified');
           const clonableEl = firstElement.cloneNode(true);
           create_newCard(clonableEl);
@@ -82,6 +82,25 @@ export const richGridPattern_func = () => {
           create_newCard(clonableEl);
         }
       }
+      function twinWrapping() {
+        const allTwinWaters = document.querySelectorAll('.looking-for-a-twin');
+        console.log(allTwinWaters);
+
+        if (allTwinWaters.length >= 2) {
+          if (allTwinWaters[0].nextElementSibling.classList.contains('looking-for-a-twin')) {
+            const elementsToAppend = [allTwinWaters[0], allTwinWaters[0].nextElementSibling];
+            const twinWrapper = document.createElement('div');
+            twinWrapper.classList.add('twin-wrapper');
+            const parentElement = allTwinWaters[0].parentNode;
+            parentElement.insertBefore(twinWrapper, allTwinWaters[0]);
+            elementsToAppend.forEach((element) => {
+              element.classList.remove('looking-for-a-twin');
+              twinWrapper.appendChild(element);
+            });
+          }
+        }
+      }
+      twinWrapping();
     }
     //–––––––––––––––––––––––––
     window.fsAttributes = window.fsAttributes || [];
