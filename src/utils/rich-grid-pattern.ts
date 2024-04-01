@@ -21,13 +21,6 @@ export const richGridPattern_func = () => {
     }
 
     function create_newCard(element) {
-      if (array_patterns[iterator_patterns] === 'big-empty') {
-        const space = document.createElement('div');
-        space.classList.add('space');
-
-        create_newModule(space);
-        // create_newModule(element);
-      }
       if (array_patterns[iterator_patterns] === 'large-double-card') {
         create_newModule(element);
       }
@@ -37,16 +30,6 @@ export const richGridPattern_func = () => {
       if (array_patterns[iterator_patterns] === 'big-card') {
         element.querySelector('img').classList.remove('hide');
         create_newModule(element);
-      }
-      if (array_patterns[iterator_patterns] === 'big-tip') {
-        if (iterator_tips < array_allTips.length) {
-          iterator_tips = iterator_tips + 1;
-        } else {
-          iterator_tips = 0;
-        }
-
-        create_newModule(array_allTips[iterator_tips]);
-        // create_newModule(element);
       }
     }
     //
@@ -63,23 +46,61 @@ export const richGridPattern_func = () => {
     function gridStart() {
       while (document.querySelectorAll('.need-to-modified').length) {
         if (iterator_patterns < array_patterns.length) {
-          const firstElement = document.querySelectorAll('.need-to-modified')[0];
-          //вынести сюда создание всякой дичи
-          firstElement.classList.remove('need-to-modified');
-          const clonableEl = firstElement.cloneNode(true);
-          create_newCard(clonableEl);
+          if (
+            array_patterns[iterator_patterns] === 'big-tip' ||
+            array_patterns[iterator_patterns] === 'big-empty'
+          ) {
+            if (array_patterns[iterator_patterns] === 'big-empty') {
+              const space = document.createElement('div');
+              space.classList.add('space');
+              create_newModule(space);
+            }
+            if (array_patterns[iterator_patterns] === 'big-tip') {
+              if (iterator_tips < array_allTips.length) {
+                iterator_tips = iterator_tips + 1;
+              } else {
+                iterator_tips = 0;
+              }
+              create_newModule(array_allTips[iterator_tips]);
+            }
+          } else {
+            const firstElement = document.querySelectorAll('.need-to-modified')[0];
+            //вынести сюда создание всякой дичи
+            firstElement.classList.remove('need-to-modified');
+            const clonableEl = firstElement.cloneNode(true);
+            create_newCard(clonableEl);
+          }
           //
           iterator_patterns = iterator_patterns + 1;
         } else {
           iterator_patterns = 0;
           //
 
-          const firstElement = document.querySelectorAll('.need-to-modified')[0];
+          if (
+            array_patterns[iterator_patterns] === 'big-tip' ||
+            array_patterns[iterator_patterns] === 'big-empty'
+          ) {
+            if (array_patterns[iterator_patterns] === 'big-empty') {
+              const space = document.createElement('div');
+              space.classList.add('space');
+              create_newModule(space);
+            }
+            if (array_patterns[iterator_patterns] === 'big-tip') {
+              if (iterator_tips < array_allTips.length) {
+                iterator_tips = iterator_tips + 1;
+              } else {
+                iterator_tips = 0;
+              }
+              create_newModule(array_allTips[iterator_tips]);
+            }
+          } else {
+            const firstElement = document.querySelectorAll('.need-to-modified')[0];
 
-          firstElement.classList.remove('need-to-modified');
+            firstElement.classList.remove('need-to-modified');
 
-          const clonableEl = firstElement.cloneNode(true);
-          create_newCard(clonableEl);
+            const clonableEl = firstElement.cloneNode(true);
+            create_newCard(clonableEl);
+          }
         }
       }
       function twinWrapping() {
