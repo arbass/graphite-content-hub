@@ -45,6 +45,7 @@ export const richGridPattern_func = () => {
     //
     function gridStart() {
       while (document.querySelectorAll('.need-to-modified').length) {
+        twinWrapping();
         if (iterator_patterns < array_patterns.length) {
           if (
             array_patterns[iterator_patterns] === 'big-tip' ||
@@ -65,7 +66,7 @@ export const richGridPattern_func = () => {
             }
           } else {
             const firstElement = document.querySelectorAll('.need-to-modified')[0];
-            //вынести сюда создание всякой дичи
+
             firstElement.classList.remove('need-to-modified');
             const clonableEl = firstElement.cloneNode(true);
             create_newCard(clonableEl);
