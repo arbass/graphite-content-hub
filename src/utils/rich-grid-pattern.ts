@@ -16,6 +16,12 @@ export const richGridPattern_func = () => {
       if (array_patterns[iterator_patterns] === 'large-double-card') {
         newModule.classList.add('looking-for-a-twin');
       }
+      if (array_patterns[iterator_patterns] === 'big-tip') {
+        newModule.classList.add('tip-module');
+      }
+      if (array_patterns[iterator_patterns] === 'big-empty') {
+        newModule.classList.add('hide-on-mobile');
+      }
       newModule.appendChild(elementToAppend);
       grid_fake.appendChild(newModule);
     }
@@ -46,6 +52,7 @@ export const richGridPattern_func = () => {
     function gridStart() {
       while (document.querySelectorAll('.need-to-modified').length) {
         twinWrapping();
+        removeDoubleTwin_onMobile();
         if (iterator_patterns < array_patterns.length) {
           if (
             array_patterns[iterator_patterns] === 'big-tip' ||
@@ -122,21 +129,36 @@ export const richGridPattern_func = () => {
         }
       }
       twinWrapping();
-    }
-    //–––––––––––––––––––––––––
-    window.fsAttributes = window.fsAttributes || [];
-    window.fsAttributes.push([
-      'cmsload',
-      (listInstances) => {
-        const [listInstance] = listInstances;
-        listInstance.on('renderitems', (renderedItems) => {
-          console.log('renderedItems');
-          gridStart();
-        });
-      },
-    ]);
-    //–––––––––––––––––––––––––
 
-    gridStart();
+      function removeDoubleTwin_onMobile() {
+        const allTips = document.querySelectorAll('.tip-module');
+        if (allTips.length) {
+          allTips.forEach((fact) => {
+            if (
+              fact.nextElementSibling &&
+              fact.nextElementSibling.classList.contains('tip-module')
+            ) {
+              fact.nextElementSibling.classList.add('hide-on-mobile');
+            }
+          });
+        }
+      }
+      removeDoubleTwin_onMobile();
+    }
   }
+  //–––––––––––––––––––––––––
+  window.fsAttributes = window.fsAttributes || [];
+  window.fsAttributes.push([
+    'cmsload',
+    (listInstances) => {
+      const [listInstance] = listInstances;
+      listInstance.on('renderitems', (renderedItems) => {
+        console.log('renderedItems');
+        gridStart();
+      });
+    },
+  ]);
+  //–––––––––––––––––––––––––
+
+  gridStart();
 };
