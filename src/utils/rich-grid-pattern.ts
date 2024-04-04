@@ -34,7 +34,7 @@ export const richGridPattern_func = () => {
         create_newModule(element);
       }
       if (array_patterns[iterator_patterns] === 'big-card') {
-        element.querySelector('img').classList.remove('hide');
+        element.querySelector('.img-wrapper').classList.remove('hide');
         create_newModule(element);
       }
     }
@@ -145,20 +145,20 @@ export const richGridPattern_func = () => {
       }
       removeDoubleTwin_onMobile();
     }
-  }
-  //–––––––––––––––––––––––––
-  window.fsAttributes = window.fsAttributes || [];
-  window.fsAttributes.push([
-    'cmsload',
-    (listInstances) => {
-      const [listInstance] = listInstances;
-      listInstance.on('renderitems', (renderedItems) => {
-        console.log('renderedItems');
-        gridStart();
-      });
-    },
-  ]);
-  //–––––––––––––––––––––––––
+    //–––––––––––––––––––––––––
+    window.fsAttributes = window.fsAttributes || [];
+    window.fsAttributes.push([
+      'cmsload',
+      (listInstances) => {
+        const [listInstance] = listInstances;
+        listInstance.on('renderitems', (renderedItems) => {
+          console.log('renderedItems');
+          gridStart();
+        });
+      },
+    ]);
+    //–––––––––––––––––––––––––
 
-  gridStart();
+    gridStart();
+  }
 };
