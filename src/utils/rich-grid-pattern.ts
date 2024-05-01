@@ -64,7 +64,7 @@ export const richGridPattern_func = () => {
               create_newModule(space);
             }
             if (array_patterns[iterator_patterns] === 'big-tip') {
-              if (iterator_tips < array_allTips.length) {
+              if (iterator_tips < array_allTips.length - 1) {
                 iterator_tips = iterator_tips + 1;
               } else {
                 iterator_tips = 0;
@@ -94,7 +94,7 @@ export const richGridPattern_func = () => {
               create_newModule(space);
             }
             if (array_patterns[iterator_patterns] === 'big-tip') {
-              if (iterator_tips < array_allTips.length) {
+              if (iterator_tips < array_allTips.length - 1) {
                 iterator_tips = iterator_tips + 1;
               } else {
                 iterator_tips = 0;
