@@ -53,7 +53,7 @@ export const richGridPattern_func = () => {
       while (document.querySelectorAll('.need-to-modified').length) {
         twinWrapping();
         removeDoubleTwin_onMobile();
-        if (iterator_patterns < array_patterns.length) {
+        if (iterator_patterns < array_patterns.length - 1) {
           if (
             array_patterns[iterator_patterns] === 'big-tip' ||
             array_patterns[iterator_patterns] === 'big-empty'
